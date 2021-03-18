@@ -1,0 +1,304 @@
+<div id="ball" style="
+  z-index:5;
+  position:absolute;
+  left:0px;
+  top:0px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background: green"></div>
+<div id="ball2" style="
+  z-index:4;
+  position:absolute;
+  left:0px;
+  top:200px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background: red"></div>
+<div id="ball3" style="
+  z-index:3;
+  position:absolute;
+  left:0px;
+  top:400px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background: blue"></div>
+<div id="ball4" style="
+  z-index:3;
+  position:absolute;
+  left:0px;
+  top:400px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background: purple"></div>
+<div id="ball5" style="
+  z-index:3;
+  position:absolute;
+  left:0px;
+  top:400px;
+  width:50px;
+  height:50px;
+  border-radius:50%;
+  background: orange"></div>
+
+<script>
+ballSizes = [50, 100, 150, 200];
+
+var velocityX = 5;
+var velocityY = 3;
+var positionX = 0;
+var positionY = 0;
+
+let velocityX2 = 3;
+let velocityY2 = 5;
+let positionX2 = 0;
+let positionY2 = 200;
+
+let velocityX3 = 4;
+let velocityY3 = 5;
+let positionX3 = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+let positionY3 = 400;
+
+let velocityX4 = 6;
+let velocityY4 = 3;
+let positionX4 = 0;
+let positionY4 = 600;
+
+let velocityX5 = 3;
+let velocityY5 = 6;
+let positionX5 = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+let positionY5 = 800;
+
+var ball = document.getElementById('ball');
+let ball2 = document.getElementById('ball2');
+let ball3 = document.getElementById('ball3');
+let ball4 = document.getElementById('ball4');
+let ball5 = document.getElementById('ball5');
+
+
+let movingLeft = true;
+let movingDown = true;
+
+let movingLeft2 = true;
+let movingDown2 = true;
+
+let movingLeft3 = true;
+let movingDown3 = true;
+
+let movingLeft4 = true;
+let movingDown4 = true;
+
+let movingLeft5 = true;
+let movingDown5 = true;
+
+function moveBall(){
+  let winHeight = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
+  let winWidth = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
+  //let currentRanBallSize = ballSizes[Math.floor(Math.random()*ballSizes.length)];
+
+                            //- currentRanBallSize
+  if (positionX >= winWidth - 50) {
+    movingLeft = false;
+    ball.style.background = 'rgb(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) +')';
+    //currentRanBallSize = currentRanBallSize = ballSizes[Math.floor(Math.random()*ballSizes.length)];
+    //ball.style.height =  currentRanBallSize + 'px';
+    //ball.style.width = ball.style.height;
+  }
+  if (positionX <= 0){
+    movingLeft = true;
+    ball.style.background = 'rgb(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) +')';
+  }
+
+  if(movingLeft){
+    positionX += velocityX;
+    ball.style.left = positionX +'px';
+      } else { 
+      positionX -= velocityX;
+      ball.style.left = positionX +'px';
+      }
+                            
+                            //- currentRanBallSize
+  if (positionY >= winHeight - 50) {
+    movingDown = false;
+    velocityY = Math.floor((Math.random()*7)+1);
+    velocityX = Math.floor((Math.random()*7)+1);
+  }
+  if (positionY <= 0){
+    movingDown = true;
+    velocityY = Math.floor((Math.random()*7)+1);
+    velocityX = Math.floor((Math.random()*7)+1);
+  }
+
+  if(movingDown){
+    positionY += velocityY;
+    ball.style.top = positionY +'px';
+    } else { 
+      positionY -= velocityY;
+      ball.style.top = positionY +'px';
+     }
+
+  //now ball2
+
+  if (positionX2 >= winWidth - 50) {
+    movingLeft2 = false;
+    ball2.style.background = 'rgb(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) +')';
+  }
+  if (positionX2 <= 0){
+    movingLeft2 = true;
+    ball2.style.background = 'rgb(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) +')';
+  }
+
+  if(movingLeft2){
+    positionX2 += velocityX2;
+    ball2.style.left = positionX2 +'px';
+      } else { 
+      positionX2 -= velocityX2;
+      ball2.style.left = positionX2 +'px';
+      }
+
+  if (positionY2 >= winHeight - 50) {
+    movingDown2 = false;
+    velocityY2 = Math.floor((Math.random()*7)+1);
+    velocityX2 = Math.floor((Math.random()*7)+1);
+  }
+  if (positionY2 <= 0){
+    movingDown2 = true;
+    velocityY2 = Math.floor((Math.random()*7)+1);
+    velocityX2 = Math.floor((Math.random()*7)+1);
+  }
+
+  if(movingDown2){
+    positionY2 += velocityY2;
+    ball2.style.top = positionY2 +'px';
+    } else { 
+      positionY2 -= velocityY2;
+      ball2.style.top = positionY2 +'px';
+     }
+  
+  //now ball3
+
+  if (positionX3 >= winWidth - 50) {
+    movingLeft3 = false;
+    ball3.style.background = 'rgb(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) +')'; 
+  }
+  if (positionX3 <= 0){
+    movingLeft3 = true;
+    ball3.style.background = 'rgb(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) +')';
+  }
+
+  if(movingLeft3){
+    positionX3 += velocityX3;
+    ball3.style.left = positionX3 +'px';
+      } else { 
+      positionX3 -= velocityX3;
+      ball3.style.left = positionX3 +'px';
+      }
+
+  if (positionY3 >= winHeight - 50) {
+    movingDown3 = false;
+    velocityY3 = Math.floor((Math.random()*7)+1);
+    velocityX3 = Math.floor((Math.random()*7)+1);
+    }
+
+  if (positionY3 <= 0){
+    movingDown3 = true;
+    velocityY3 = Math.floor((Math.random()*7)+1);
+    velocityX3 = Math.floor((Math.random()*7)+1);
+  }
+
+  if(movingDown3){
+    positionY3 += velocityY3;
+    ball3.style.top = positionY3 +'px';
+    } else { 
+      positionY3 -= velocityY3;
+      ball3.style.top = positionY3 +'px';
+     }
+  
+  //now ball4
+
+  if (positionX4 >= winWidth - 50) {
+    movingLeft4 = false;
+    ball4.style.background = 'rgb(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) +')'; 
+  }
+  if (positionX4 <= 0){
+    movingLeft4 = true;
+    ball4.style.background = 'rgb(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) +')';
+  }
+
+  if(movingLeft4){
+    positionX4 += velocityX4;
+    ball4.style.left = positionX4 +'px';
+      } else { 
+      positionX4 -= velocityX4;
+      ball4.style.left = positionX4 +'px';
+      }
+
+  if (positionY4 >= winHeight - 50) {
+    movingDown4 = false;
+    velocityY4 = Math.floor((Math.random()*7)+1);
+    velocityX4 = Math.floor((Math.random()*7)+1);
+    }
+
+  if (positionY4 <= 0){
+    movingDown4 = true;
+    velocityY4 = Math.floor((Math.random()*7)+1);
+    velocityX4 = Math.floor((Math.random()*7)+1);
+  }
+
+  if(movingDown4){
+    positionY4 += velocityY4;
+    ball4.style.top = positionY4 +'px';
+    } else { 
+      positionY4 -= velocityY4;
+      ball4.style.top = positionY4 +'px';
+     }
+
+  //now ball 5
+
+  if (positionX5 >= winWidth - 50) {
+    movingLeft5 = false;
+    ball5.style.background = 'rgb(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) +')'; 
+  }
+  if (positionX5 <= 0){
+    movingLeft5 = true;
+    ball5.style.background = 'rgb(' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) + ',' + Math.floor(Math.random()*255) +')';
+  }
+
+  if(movingLeft5){
+    positionX5 += velocityX5;
+    ball5.style.left = positionX5 +'px';
+      } else { 
+      positionX5 -= velocityX5;
+      ball5.style.left = positionX5 +'px';
+      }
+
+  if (positionY5 >= winHeight - 50) {
+    movingDown5 = false;
+    velocityY5 = Math.floor((Math.random()*7)+1);
+    velocityX5 = Math.floor((Math.random()*7)+1);
+    }
+
+  if (positionY5 <= 0){
+    movingDown5 = true;
+    velocityY5 = Math.floor((Math.random()*7)+1);
+    velocityX5 = Math.floor((Math.random()*7)+1);
+  }
+
+  if(movingDown5){
+    positionY5 += velocityY5;
+    ball5.style.top = positionY5 +'px';
+    } else { 
+      positionY5 -= velocityY5;
+      ball5.style.top = positionY5 +'px';
+     }
+
+
+
+}
+
+setInterval(moveBall, 5);
+
+</script>
